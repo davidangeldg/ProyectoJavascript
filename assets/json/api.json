@@ -29,7 +29,7 @@
         "title":"Negra",
         "precio":20000,
         "color":"negro",
-        "imagen": "assets/img/gorra_negra.png"
+        "imagen": "assets/img/gorra-negra.png"
     },
     {
         "id":5,
@@ -37,7 +37,7 @@
         "title": "Negro-blanco",
         "precio":20000,
         "color":"negro-blanco",
-        "imagen": "assets/img/gorra_negra.png"
+        "imagen": "assets/img/gorra-negra.png"
     },
     {
         "id":6,
@@ -45,6 +45,6 @@
         "title": "Negro-blanco",
         "precio":20000,
         "color":"negro-blanco",
-        "imagen": "assets/img/gorra_negra.png"
+        "imagen": "assets/img/gorra-negra.png"
     }
 ]

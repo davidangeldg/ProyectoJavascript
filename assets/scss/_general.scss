@@ -1,0 +1,52 @@
+$back_color: #161616;
+$white: #fff;
+$color3: rgb(155, 0, 0);
+$color4: #b6b6b6;
+$color5: #151515;
+$font_family: 'Montserrat', sans-serif;
+$font-size: 62.5%;
+$border_radius: 0;
+
+@mixin soloflex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+html {
+    font-family: $font_family;
+    font-size: $font-size;
+}
+
+body {
+    margin: 0;
+    background-color: $back_color;
+}
+
+.to-top{
+	background-color: $color5;
+    width: 50px;
+    height: 50px;
+	margin: 10px;
+	right: 5px;
+    padding: 10px;
+    position: fixed;
+	bottom: 10px;
+	text-decoration: none;
+	border-radius: 7px;
+	border: solid 1px $color3;
+	@include soloflex;
+	i{
+		font-size: 2rem;
+		color: $color3;
+	}
+	&:hover {
+		background-color: $color3;
+		text-decoration: none;
+		i{
+			color: $color5;
+		}
+
+	}
+}
+

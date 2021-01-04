@@ -1,0 +1,34 @@
+.nosotros {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+    h2{
+        color: rgb(139, 139, 139);
+        font-weight: 900;
+        font-size: 10rem;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: -5px;
+        opacity: .2;
+    }
+    div {
+        position: relative;
+        top: -7rem;
+        @include soloflex;
+        flex-flow: row wrap;
+        img{
+            width: 40%;
+            // height: 400px;
+        }
+        span{
+            width: 60%;
+            p {
+                font-size: 2rem;
+                // width: 40%;
+                margin: 5%;
+                color: $white;
+            }
+        }
+    }
+}

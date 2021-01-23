@@ -134,7 +134,7 @@ header {
                         }
                     }
                     td {
-                        padding: 1rem;
+                        padding: .5rem;
                         .boton-masmenos{
                             width: 10px;
                             width: 100%;
@@ -153,6 +153,9 @@ header {
                         }
                         .carrito-nombre{
                             @include soloflex;
+                        }
+                        .precioCarrito {
+
                         }
                     }
                         

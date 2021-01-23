@@ -137,7 +137,7 @@ header {
         .header__contenido .header__contenido__tienda .links .desplegar table tr th {
           padding: 2rem; }
         .header__contenido .header__contenido__tienda .links .desplegar table td {
-          padding: 1rem; }
+          padding: .5rem; }
           .header__contenido .header__contenido__tienda .links .desplegar table td .boton-masmenos {
             width: 10px;
             width: 100%;

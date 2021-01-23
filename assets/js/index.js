@@ -85,15 +85,14 @@ const pintarCarrito = ()=> {
     
     Object.values(carrito).forEach(producto => {
         // console.log(producto);
-        let moneda = producto.precio;
-        const formatoPrecio = new Intl.NumberFormat({maximumSignificantDigits: 3}).format(moneda);
+        let monedaCarrito = producto.precio * producto.cantidad; /* obteniendo valor de perico x cantidad */
         template.querySelector('.imagen').setAttribute('src', producto.imagen);
         template.querySelector('.product-title').textContent = producto.nombre;
         template.querySelector('.negrita').textContent = producto.title;
-        template.querySelector('span').textContent = formatoPrecio * producto.cantidad;
+        // template.querySelector('span').textContent = formatoPrecio * producto.cantidad;
+        template.querySelector('span').textContent = new Intl.NumberFormat().format(monedaCarrito); /* Separador decimales */
         template.querySelectorAll('td')[3].textContent = producto.cantidad;
         
-        console.log(template.querySelector('span').textContent = `${formatoPrecio * producto.cantidad}.000`);
         // botones + y -
         template.querySelector('.mas').dataset.id = producto.id;
         template.querySelector('.menos').dataset.id = producto.id;
@@ -113,15 +112,18 @@ const pintarFooter = () => {
     footer.innerHTML = '';
     
     if(Object.keys(carrito).length === 0){
-        footer.innerHTML = '<td colspan="5"><p>Carrito vacio</p> </td>';
+        footer.innerHTML = '<td colspan="5"><p>Carrito vacio</p></td>';
         return;
     };
+    //separador miles footer carrito
+    let monedaFooter = Object.values(carrito).reduce((a,{cantidad, precio}) => a + cantidad * precio, 0);
+    const formatoPrecioFooter = new Intl.NumberFormat().format(monedaFooter);
 
     const template = document.querySelector('#template-footer').content;
     const fragment = document.createDocumentFragment();
 
     const Xcantidad = Object.values(carrito).reduce((a,{cantidad}) => a + cantidad, 0);
-    const totalPesos = Object.values(carrito).reduce((a,{cantidad, precio}) => a + cantidad * precio, 0);
+    const totalPesos = formatoPrecioFooter;
     
     
     template.querySelector('span').textContent = totalPesos;

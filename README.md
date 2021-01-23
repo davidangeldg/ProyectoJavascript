@@ -4,7 +4,9 @@ ________________________________________________________________________________
 GR PuntoKool
 
 En este repositorio se encuentra el proycto final del curso "Javascript" de CoderHouse, el cual es acerca de una pagina de venta de productos estampados
-Este sitio fue creado utilizando el principio mobile first, por lo cual es totalmente responsive.
+cuyo objetivo principal es crear la funcionalidad de un carrito de compras utilizando vanilla js, este sitio fue creado utilizando el principio mobile first, por lo cual es totalmente responsive.
+
+
 
 <strong>En la rama master van a encontrar los archivos principales con los que está construido el sitio:</strong>
 

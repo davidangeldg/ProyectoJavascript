@@ -3,6 +3,7 @@
         "id":1,
         "nombre":"Camiseta",
         "title":"Blanca",
+        "estilo": "Black Panter",
         "precio":35000,
         "color":"blanco",
         "imagen": "assets/img/camiseta_blanca.png"
@@ -11,6 +12,7 @@
         "id":2,
         "nombre":"Camiseta",
         "title":"Negra",
+        "estilo": "Selección Colombia",
         "precio":35000,
         "color":"negro",
         "imagen": "assets/img/camiseta_negra.png"
@@ -19,6 +21,7 @@
         "id":3,
         "nombre":"Camiseta",
         "title":"Blanca",
+        "estilo": "Black Panter",
         "precio":35000,
         "color":"blanco",
         "imagen": "assets/img/camiseta_blanca.png"
@@ -27,6 +30,7 @@
         "id":4,
         "nombre":"Gorra",
         "title":"Negra",
+        "estilo": "Estampado a elección",
         "precio":20000,
         "color":"negro",
         "imagen": "assets/img/gorra-negra.png"
@@ -35,16 +39,18 @@
         "id":5,
         "nombre":"Gorra",
         "title": "Negro-blanco",
+        "estilo": "Estampado a elección",
         "precio":20000,
         "color":"negro-blanco",
-        "imagen": "assets/img/gorra-negra.png"
+        "imagen": "assets/img/gorra_negroblanco.png"
     },
     {
         "id":6,
         "nombre":"Gorra",
-        "title": "Negro-blanco",
+        "title": "Gris",
+        "estilo": "Estampado a elección",
         "precio":20000,
-        "color":"negro-blanco",
-        "imagen": "assets/img/gorra-negra.png"
+        "color":"gris",
+        "imagen": "assets/img/gorra_gris.png"
     }
 ]

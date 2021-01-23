@@ -9,7 +9,7 @@
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   bottom: 10rem;
-  z-index: 10;
+  z-index: 3;
   width: 400px;
 }
 
@@ -105,5 +105,65 @@
 @media (min-width: 62em) {
   .featurette-heading {
     margin-top: 7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-item {
+    height: 40rem;
+  }
+  .carousel-item > img {
+    left: -25%;
+    width: auto;
+  }
+  .carousel-caption h1 {
+    font-size: 4rem;
+    text-shadow: 0.1em 0.1em 0.2em black;
+  }
+  .carousel-caption p {
+    font-size: 2rem;
+  }
+
+}
+
+@media (max-width: 601px) {
+  .carousel-item {
+    height: 40rem;
+  }
+  .carousel-item > img {
+    left: -60%;
+    width: auto;
+  }
+  .carousel-caption h1 {
+    font-size: 3rem;
+    text-shadow: 0.1em 0.1em 0.2em black;
+  }
+  .carousel-caption p {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 501px) {
+  .carousel-item {
+    height: 40rem;
+  }
+  .carousel-item > img {
+    left: -100%;
+    width: auto;
+  }
+}
+
+@media (max-width: 361px) {
+  .carousel-item {
+    height: 30rem;
+  }
+  .carousel-item > img {
+    left: -100%;
+    width: auto;
+  }
+  .carousel-caption {
+    bottom: 6rem;
+    width: 300px;
+    left: 3%;
   }
 }

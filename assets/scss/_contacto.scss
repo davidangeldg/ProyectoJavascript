@@ -66,3 +66,41 @@ legend {
         border: solid 1px $white;
     }
 }
+@media (max-width: 800px){
+    .container__imgForm {
+        flex-flow: column wrap;
+        section{
+            width: 100%;
+            img {
+                height: 200px;
+                margin-bottom: 2rem;
+            }
+        }
+  }
+}
+@media (max-width: 501px){
+    #contacto {
+        h2{
+            font-size: 6rem;
+            letter-spacing: -3px;
+            margin-bottom: 3rem;
+        }
+    }
+}
+
+@media (max-width: 361px) {
+    #contacto {
+        h2{
+            font-size: 5rem;
+            letter-spacing: -3px;
+            margin-bottom: 3rem;
+        }
+    }
+    .container__imgForm {
+        margin: 0;
+        padding: 2rem .5rem;
+        section{
+            width: 100%;
+        }
+    }
+}

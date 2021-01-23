@@ -3,92 +3,49 @@ const contenedorProductos = document.querySelector('#container_productos');
 const items = document.querySelector('#items');
 const footer = document.querySelector('#footer-carrito');
 const vaciarCarrito = document.querySelector('#vaciar-carrito');
+const carrritoNotificacion = document.querySelector('#cart_menu_num');
 
 let carrito = {};
 
+document.addEventListener('DOMContentLoaded', () => { obtenerProductos() });
 
-// setTimeout(() => {
-//     const resultado = Database
-// }, 2000);
-
-
-// const BaseDatos = [
-//     {
-//         "id":1,
-//         "nombre":"Camiseta",
-//         "title":"Blanca",
-//         "precio":35000,
-//         "color":"blanco",
-//         "imagen": "assets/img/camiseta_blanca.png"
-//     },
-//     {
-//         "id":2,
-//         "nombre":"Camiseta",
-//         "title":"Negra",
-//         "precio":35000,
-//         "color":"negro",
-//         "imagen": "assets/img/camiseta_negra.png"
-//     },
-//     {
-//         "id":3,
-//         "nombre":"Camiseta",
-//         "title":"Blanca",
-//         "precio":35000,
-//         "color":"blanco",
-//         "imagen": "assets/img/camiseta_blanca.png"
-//     },
-//     {
-//         "id":4,
-//         "nombre":"Gorra",
-//         "title":"Negra",
-//         "precio":20000,
-//         "color":"negro",
-//         "imagen": "assets/img/gorra_negra.png"
-//     },
-//     {
-//         "id":5,
-//         "nombre":"Gorra",
-//         "title": "Negro-blanco",
-//         "precio":20000,
-//         "color":"negro-blanco",
-//         "imagen": "assets/img/gorra_negra.png"
-//     },
-//     {
-//         "id":6,
-//         "nombre":"Gorra",
-//         "title": "Negro-blanco",
-//         "precio":20000,
-//         "color":"negro-blanco",
-//         "imagen": "assets/img/gorra_negra.png"
-//     }
-// ];
-
-// document.addEventListener('DOMContentLoaded', () => { obtenerProductos() });
 document.addEventListener('DOMContentLoaded', () => { 
     carrito = JSON.parse(localStorage.getItem('carrito')) || {};
     pintarCarrito();
 });
 
+const obtenerProductos = async () => {
+    try {
+        const res = await fetch('assets/json/api.json');
+        const data = await res.json(); //con await espero a que el documento me tome la api
+        // console.log(data);
+        pintarPoductos(data);
+        identificarBotones(data);
+    } catch (error) {
+        console.log (error);
+    }
+};
 
-// const obtenerProductos =  () => {
-//         const data = resultado;
-//         console.log(data);
-//         pintarPoductos(data);
-//         identificarBotones(data);
-// };
 
+//pinto productos obteniendo la info de la variable data
 const pintarPoductos = (data) => {
+    /*hago el llamado al template desde html */
     const template = document.querySelector('#template-camisetas').content;
     const fragment = document.createDocumentFragment();
-    // console.log(template)
+
     data.forEach(producto => {
+        /*recorro el array data para poder ir pintando los datos */
         // console.log(producto);
+        let moneda = producto.precio;
+        const formatoPrecio = new Intl.NumberFormat().format(moneda);
+        
         template.querySelector('.product-img').setAttribute('src', producto.imagen);
         template.querySelector('.product-title').textContent = producto.nombre;
         template.querySelector('.negrita').textContent = producto.title;
-        template.querySelector('.precio').textContent = producto.precio;
+        template.querySelector('.product-caption').textContent = producto.estilo;
+        template.querySelector('.precio').textContent = formatoPrecio;
         template.querySelector('button').dataset.id = producto.id;
-
+        //doy "el permiso" para que el appendclhild funcione
         const clone = template.cloneNode(true);
         fragment.appendChild(clone);
     });
@@ -108,7 +65,13 @@ const identificarBotones = (data) => {
             carrito[producto.id] = { ...producto };
             // console.log(carrito);
             pintarCarrito();
+            Toastify({
 
+                text: "Producto agregado",
+                
+                duration: 2000
+                
+                }).showToast();
         } )
     });
 };
@@ -122,12 +85,15 @@ const pintarCarrito = ()=> {
     
     Object.values(carrito).forEach(producto => {
         // console.log(producto);
+        let moneda = producto.precio;
+        const formatoPrecio = new Intl.NumberFormat({maximumSignificantDigits: 3}).format(moneda);
         template.querySelector('.imagen').setAttribute('src', producto.imagen);
         template.querySelector('.product-title').textContent = producto.nombre;
         template.querySelector('.negrita').textContent = producto.title;
-        template.querySelector('span').textContent = producto.precio * producto.cantidad;
+        template.querySelector('span').textContent = formatoPrecio * producto.cantidad;
         template.querySelectorAll('td')[3].textContent = producto.cantidad;
-
+        
+        console.log(template.querySelector('span').textContent = `${formatoPrecio * producto.cantidad}.000`);
         // botones + y -
         template.querySelector('.mas').dataset.id = producto.id;
         template.querySelector('.menos').dataset.id = producto.id;
@@ -139,7 +105,7 @@ const pintarCarrito = ()=> {
     pintarFooter();
     accionBotones();
     guardarStorage();
-    
+    pintarNotificación();
 };
 
 const pintarFooter = () => {
@@ -172,7 +138,7 @@ vaciarCarrito.addEventListener('click', () => {
         carrito = {};
         pintarCarrito();
 });
-
+/* dandole funcionalidad a los botones */
 const accionBotones = () => {
     const botonAgregar = document.querySelectorAll('#items .mas');
     const botonEliminar = document.querySelectorAll('#items .menos');
@@ -204,9 +170,40 @@ function guardarStorage () {
     localStorage.setItem('carrito', JSON.stringify(carrito));
 };
 
+function pintarNotificación () {
+    const templateNumero = document.querySelector('#cart_menu_num p');
+    const fragment = document.createDocumentFragment();
+    // console.log(templateNumero)
+    const Xcantidad1 = Object.values(JSON.parse(localStorage.getItem('carrito'))).length;
+    // console.log(Xcantidad1)
+
+    if (Xcantidad1 === 0){
+        document.querySelector('#cart_menu_num').style.display = 'none';
+    } else {
+        document.querySelector('#cart_menu_num').style.display = 'block';
+        templateNumero.textContent = Xcantidad1;
+        templateNumero.appendChild(fragment);
+    }
+};
+
+
 /* JQUERY */
 
 $(function () {
+    //animacion carrito
+    $('#carrito').hide();
+    $(".submenu").hover(
+        function () {
+            $('#carrito').slideDown('slow');
+            $('#carrito').addClass("desplegar");
+        },
+        function () {
+            $('#carrito').hide();
+            $('#carrito').removeClass("desplegar");
+        }
+    );
+
+    //funcion de llevar a los links
     $('#seccionTienda').on('click', function (e) {
 		e.preventDefault();
 
@@ -221,27 +218,30 @@ $(function () {
             scrollTop: $("#contacto").offset().top  
         }, 2000);
     });
+    //boton ir arriba
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 100) {
+            $('#irArriba').fadeIn('slow');
+        } else {
+            $('#irArriba').fadeOut('slow');
+        }
+    });
     $('#irArriba').on('click', function (e) {
-		e.preventDefault();
-
+        e.preventDefault();
+        
 		$('html, body').animate({
             scrollTop: $("div.header__contenido__logo").offset().top  
         }, 1000);
-        console.log('hice click');
     });
-    /* obteniendo productos mediante ajax */
-    $.ajax({
-		url: 'assets/json/api.json',
-		success: function (data) {     
-            // console.log(data);
-            pintarPoductos(data);
-            identificarBotones(data);
-		},
-		error: function (xhr, status, errorThrown) {
-			console.log(xhr)
-			console.log(status)
-			console.log(errorThrown)
 
-		}
+
+    /* toast notification */
+    $('.tst').on('click', function (){
+        Toastify({
+
+            text: 'Producto agregado',
+            duration: 1000,
+            
+            }).showToast();
     });
 })

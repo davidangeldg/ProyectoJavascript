@@ -6,14 +6,71 @@ const vaciarCarrito = document.querySelector('#vaciar-carrito');
 
 let carrito = {};
 
+// const BaseDatos = [
+//     {
+//         "id":1,
+//         "nombre":"Camiseta",
+//         "title":"Blanca",
+//         "precio":35000,
+//         "color":"blanco",
+//         "imagen": "assets/img/camiseta_blanca.png"
+//     },
+//     {
+//         "id":2,
+//         "nombre":"Camiseta",
+//         "title":"Negra",
+//         "precio":35000,
+//         "color":"negro",
+//         "imagen": "assets/img/camiseta_negra.png"
+//     },
+//     {
+//         "id":3,
+//         "nombre":"Camiseta",
+//         "title":"Blanca",
+//         "precio":35000,
+//         "color":"blanco",
+//         "imagen": "assets/img/camiseta_blanca.png"
+//     },
+//     {
+//         "id":4,
+//         "nombre":"Gorra",
+//         "title":"Negra",
+//         "precio":20000,
+//         "color":"negro",
+//         "imagen": "assets/img/gorra_negra.png"
+//     },
+//     {
+//         "id":5,
+//         "nombre":"Gorra",
+//         "title": "Negro-blanco",
+//         "precio":20000,
+//         "color":"negro-blanco",
+//         "imagen": "assets/img/gorra_negra.png"
+//     },
+//     {
+//         "id":6,
+//         "nombre":"Gorra",
+//         "title": "Negro-blanco",
+//         "precio":20000,
+//         "color":"negro-blanco",
+//         "imagen": "assets/img/gorra_negra.png"
+//     }
+// ];
+
+// const obtenerProductos =  () => {
+//         const data = resultado;
+//         console.log(data);
+//         pintarPoductos(data);
+//         identificarBotones(data);
+// };
 document.addEventListener('DOMContentLoaded', () => { obtenerProductos() });
 
 
 const obtenerProductos = async () => {
     try {
         const res = await fetch('assets/json/api.json');
-        const data = res.json();
-        // console.log(data);
+        const data = await res.json();
+        console.log(data);
         pintarPoductos(data);
         identificarBotones(data);
     } catch (error) {

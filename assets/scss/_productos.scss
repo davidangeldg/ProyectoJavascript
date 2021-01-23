@@ -166,10 +166,10 @@
         color: #000;
     }
     
-    .ul-size li a.active {
-        background: $color3;
-        color: #fff;
-    }
+    // .ul-size li a.active {
+    //     background: $color3;
+    //     color: #fff;
+    // }
     
     .product-size:before,
     .product-size:after {
@@ -277,6 +277,11 @@
     }
 }
 
+.active {
+    background: $color3;
+    color: #fff !important;
+}
+
 @media (max-width: 724px) {
     .productos {
         .container_tarjeta {
@@ -284,3 +289,25 @@
         }
     }
 }
+@media (max-width: 501px){
+    .productos {
+        h2{
+            font-size: 6rem;
+            letter-spacing: -3px;
+            margin-bottom: 3rem;
+        }
+    }
+}
+
+@media (max-width: 361px) {
+    .productos {
+        h2{
+            font-size: 5rem;
+            letter-spacing: -3px;
+            margin-bottom: 3rem;
+        }
+        .product-price {
+            margin-left: 30px;
+        }
+    }
+  }

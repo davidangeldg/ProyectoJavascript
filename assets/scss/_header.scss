@@ -89,10 +89,25 @@ header {
                 position: relative;
             }
             
-            .submenu #carrito{
-                display: none;
+            #cart_menu_num {
+                position: absolute;
+                top: -20%;
+                left: 30%;
+                background: $color3;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                padding: 2px;
+                p{
+                    margin: 0;
+                }
             }
-            .submenu:hover #carrito{
+            
+            .desplegar {
                 display: block;
                 position: absolute;
                 right:0;
@@ -104,6 +119,8 @@ header {
                 // min-height: 400px;
                 min-width: 400px;
                 width: fit-content;
+                // transition: all ease 1s; 
+
                 .list-center {
                     width: 100%;
                     margin: 0;
@@ -165,6 +182,7 @@ header {
                         background: $back_color;
                         color: $white;
                         border: solid 1px $white;
+                        transition: all ease .5s;
                     }
                 }
                 

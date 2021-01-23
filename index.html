@@ -12,6 +12,7 @@
 	<!-- HOJAS DE ESTILOS -->
 	<link rel="stylesheet" href="assets/css/carousel.css">
 	<link rel="stylesheet" href="assets/css/bootstrap-grid.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/toastify.css">
     <link rel="stylesheet" href="assets/css/estilo.css">
     <title>GR PuntoKool</title>
 </head>
@@ -34,7 +35,7 @@
 							<li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
 							<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
 							<li class="submenu">
-								<a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+								<a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span id="cart_menu_num" data-action="cart-can" class="badge rounded-circle"><p class="nume"></p></span></a>
 								<div id="carrito">
 									<h4>Carrito de compras</h4>
 									<table id="lista-carrito" class="list-center">
@@ -130,12 +131,16 @@
 			</a>
 		  </div>
 	</section>
+	<section>
+		<div class="pruebaNumero">
+		</div>
+	</section>
 	<section class="nosotros headline">
 		<h2>Sobre Nosotros</h2>
 		<div>
 			<img src="assets/img/about-team-1.png" alt="about">
 			<span>
-				<p>Estampados <b>GRpuntoKOOL</b> nació en el año 2020, obedeciendo al deseo de satisfacer las necesidades de clientes que buscaban una alternativa diferente de personalización de sus productos, de tal forma que sean innovadores, que se diferencien del común, con excelente calidad y a un bajo costo. Nuestra filosofía es la esmerada atención y la satisfacción de nuestros clientes mediante la prestación de un servicio respetuoso, dinámico, oportuno, con atención en la preventa, venta y postventa.</p>
+				<p>Estampados <b>GRpuntoKOOL</b> nació en el año 2020, obedeciendo al deseo de satisfacer las necesidades de clientes que buscaban una alternativa diferente de personalización<span class="hiddeText"> de sus productos, de tal forma que sean innovadores, que se diferencien del común, con excelente calidad y a un bajo costo</span>. Nuestra filosofía es la esmerada atención y la satisfacción de nuestros clientes mediante la prestación de un servicio respetuoso, dinámico, oportuno, con atención en la preventa, venta y postventa.</p>
 				<p>Queremos ser una empresa capaz de ofrecer sus productos de estampados de la mejor calidad con esmerada atención al cliente, sobre las bases de la eficiencia, la eficacia y la efectividad. Contando para ello con recursos humanos y económicos capaces de garantizar el cumplimiento de los objetivos.</p>
 			</span>
 		</div>
@@ -268,7 +273,7 @@
 					<div class="product-properties">
 						<div class="product size">
 							<h4 class="talla">Talla</h4>
-							<ul class="ul-size">
+							<ul id="tallas" class="ul-size">
 								<li><a href="#">XS</a></li>
 								<li><a href="#" class="active">S</a></li>
 								<li><a href="#">M</a></li>
@@ -286,7 +291,7 @@
 						</span>
 						<h3 class="product-price">$ <span class="precio">70.000</span></h3>
 						<div class="btn">
-							<button type="btn" class="comprar">Comprar</button>
+							<button type="btn" class="comprar tst">Comprar</button>
 						</div>
 					</div>
 				</div>
@@ -318,6 +323,7 @@
 			
         </div>   
 	</footer>
+	<script src="assets/js/toastify.js"></script>
 	<!-- Scrollreveal -->
 	<script>ScrollReveal().reveal('.headline');</script>
 	<!-- FONTAWESOME -->

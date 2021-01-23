@@ -104,9 +104,22 @@ header {
         padding-right: 1em; }
       .header__contenido .header__contenido__tienda .links .submenu {
         position: relative; }
-      .header__contenido .header__contenido__tienda .links .submenu #carrito {
-        display: none; }
-      .header__contenido .header__contenido__tienda .links .submenu:hover #carrito {
+      .header__contenido .header__contenido__tienda .links #cart_menu_num {
+        position: absolute;
+        top: -20%;
+        left: 30%;
+        background: #9b0000;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        padding: 2px; }
+        .header__contenido .header__contenido__tienda .links #cart_menu_num p {
+          margin: 0; }
+      .header__contenido .header__contenido__tienda .links .desplegar {
         display: block;
         position: absolute;
         right: 0;
@@ -117,15 +130,15 @@ header {
         padding: 20px;
         min-width: 400px;
         width: fit-content; }
-        .header__contenido .header__contenido__tienda .links .submenu:hover #carrito .list-center {
+        .header__contenido .header__contenido__tienda .links .desplegar .list-center {
           width: 100%;
           margin: 0;
           padding: 0; }
-        .header__contenido .header__contenido__tienda .links .submenu:hover #carrito table tr th {
+        .header__contenido .header__contenido__tienda .links .desplegar table tr th {
           padding: 2rem; }
-        .header__contenido .header__contenido__tienda .links .submenu:hover #carrito table td {
+        .header__contenido .header__contenido__tienda .links .desplegar table td {
           padding: 1rem; }
-          .header__contenido .header__contenido__tienda .links .submenu:hover #carrito table td .boton-masmenos {
+          .header__contenido .header__contenido__tienda .links .desplegar table td .boton-masmenos {
             width: 10px;
             width: 100%;
             font-size: 1rem;
@@ -135,21 +148,21 @@ header {
             font-weight: 700;
             border-radius: 7px;
             text-transform: uppercase; }
-            .header__contenido .header__contenido__tienda .links .submenu:hover #carrito table td .boton-masmenos:hover {
+            .header__contenido .header__contenido__tienda .links .desplegar table td .boton-masmenos:hover {
               background: #161616;
               color: #fff;
               border: solid 1px #fff; }
-          .header__contenido .header__contenido__tienda .links .submenu:hover #carrito table td .carrito-nombre {
+          .header__contenido .header__contenido__tienda .links .desplegar table td .carrito-nombre {
             display: flex;
             justify-content: center;
             align-items: center; }
-        .header__contenido .header__contenido__tienda .links .submenu:hover #carrito img {
+        .header__contenido .header__contenido__tienda .links .desplegar img {
           width: 80px; }
-        .header__contenido .header__contenido__tienda .links .submenu:hover #carrito p {
+        .header__contenido .header__contenido__tienda .links .desplegar p {
           font-size: 1.5rem;
           font-weight: 300;
           color: #8b8b8b; }
-        .header__contenido .header__contenido__tienda .links .submenu:hover #carrito #vaciar-carrito {
+        .header__contenido .header__contenido__tienda .links .desplegar #vaciar-carrito {
           width: 100%;
           font-size: 1rem;
           background: #9b0000;
@@ -162,10 +175,11 @@ header {
           padding-right: 36px;
           padding-left: 36px;
           text-transform: uppercase; }
-          .header__contenido .header__contenido__tienda .links .submenu:hover #carrito #vaciar-carrito:hover {
+          .header__contenido .header__contenido__tienda .links .desplegar #vaciar-carrito:hover {
             background: #161616;
             color: #fff;
-            border: solid 1px #fff; }
+            border: solid 1px #fff;
+            transition: all ease .5s; }
 
 nav {
   z-index: 10;
@@ -297,6 +311,30 @@ nav {
         margin: 5%;
         color: #fff; }
 
+@media (max-width: 768px) {
+  .nosotros div {
+    flex-flow: column wrap; }
+    .nosotros div img {
+      width: 90%; }
+    .nosotros div span {
+      width: 100%; } }
+
+@media (max-width: 501px) {
+  .nosotros h2 {
+    font-size: 6rem;
+    letter-spacing: -3px;
+    margin-bottom: 3rem; } }
+
+@media (max-width: 361px) {
+  .nosotros h2 {
+    font-size: 5rem;
+    letter-spacing: -3px;
+    margin-bottom: 3rem; }
+  .nosotros div span p {
+    font-size: 1.5rem; }
+  .nosotros .hiddeText {
+    display: none; } }
+
 .productos {
   margin: 0;
   padding: 0;
@@ -423,9 +461,6 @@ nav {
     text-align: center;
     line-height: 22px;
     color: #000; }
-  .productos .ul-size li a.active {
-    background: #9b0000;
-    color: #fff; }
   .productos .product-size:before,
   .productos .product-size:after {
     content: '';
@@ -505,9 +540,27 @@ nav {
       color: #fff;
       border: solid 1px #fff; }
 
+.active {
+  background: #9b0000;
+  color: #fff !important; }
+
 @media (max-width: 724px) {
   .productos .container_tarjeta {
     margin: 1rem 1rem 4rem 1rem; } }
+
+@media (max-width: 501px) {
+  .productos h2 {
+    font-size: 6rem;
+    letter-spacing: -3px;
+    margin-bottom: 3rem; } }
+
+@media (max-width: 361px) {
+  .productos h2 {
+    font-size: 5rem;
+    letter-spacing: -3px;
+    margin-bottom: 3rem; }
+  .productos .product-price {
+    margin-left: 30px; } }
 
 #contacto h2 {
   position: relative;
@@ -567,6 +620,32 @@ legend {
     background: #161616;
     color: #fff;
     border: solid 1px #fff; }
+
+@media (max-width: 800px) {
+  .container__imgForm {
+    flex-flow: column wrap; }
+    .container__imgForm section {
+      width: 100%; }
+      .container__imgForm section img {
+        height: 200px;
+        margin-bottom: 2rem; } }
+
+@media (max-width: 501px) {
+  #contacto h2 {
+    font-size: 6rem;
+    letter-spacing: -3px;
+    margin-bottom: 3rem; } }
+
+@media (max-width: 361px) {
+  #contacto h2 {
+    font-size: 5rem;
+    letter-spacing: -3px;
+    margin-bottom: 3rem; }
+  .container__imgForm {
+    margin: 0;
+    padding: 2rem .5rem; }
+    .container__imgForm section {
+      width: 100%; } }
 
 .footer {
   background-color: #151515;
